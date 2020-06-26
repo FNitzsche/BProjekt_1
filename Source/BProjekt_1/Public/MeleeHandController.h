@@ -4,17 +4,17 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "MeleeHandCon.generated.h"
+#include "MeleeHandController.generated.h"
 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class BPROJEKT_1_API UMeleeHandCon : public UActorComponent
+class BPROJEKT_1_API UMeleeHandController : public UActorComponent
 {
 	GENERATED_BODY()
 
 public:	
 	// Sets default values for this component's properties
-	UMeleeHandCon();
+	UMeleeHandController();
 
 protected:
 	// Called when the game starts
@@ -28,5 +28,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	virtual float onHit(AActor * enemy);
 
+	UFUNCTION(BlueprintCallable)
+	virtual float checkFloorHit(FTransform me, float speed);
 		
 };
