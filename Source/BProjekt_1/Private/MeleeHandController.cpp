@@ -34,7 +34,7 @@ void UMeleeHandController::TickComponent(float DeltaTime, ELevelTick TickType, F
 
 float UMeleeHandController::onHit(AActor * enemy){
 
-	return 1;
+	return 90;
 }
 
 float UMeleeHandController::checkFloorHit(FTransform me, float speed){
