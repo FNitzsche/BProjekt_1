@@ -2,6 +2,7 @@
 
 
 #include "StromHandController.h"
+#include "GameFramework/Actor.h"
 
 // Sets default values for this component's properties
 UStromHandController::UStromHandController()
@@ -37,12 +38,17 @@ FVector UStromHandController::getTargetPoint(FTransform me){
 	return tmp;
 }
 
-TArray<AActor *> UStromHandController::getTargets(FTransform me){
+TArray<AActor *> UStromHandController::getTargets(AActor * colBox){
 	TArray<AActor *> targets;
+	colBox.GetOverlappingActors(targets);
+	//GetOverlappingActors(targets);
+	//for(AActor actor: colBox.getOverlappingActors()){
+		
+	//}
 	return targets;
 }
 
-float UStromHandController::getDamage(AActor * enemy){
+float UStromHandController::getDamage(TArray<AActor *> enemys, float delta){
 
 	return 0;
 }

@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "GameFramework/Actor.h"
 #include "StromHandController.generated.h"
+
 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
@@ -29,10 +31,10 @@ public:
 	FVector getTargetPoint(FTransform me);
 
 	UFUNCTION(BlueprintCallable)
-	TArray<AActor *> getTargets(FTransform me);
+	TArray<AActor *> getTargets(AActor * colBox);
 
 	UFUNCTION(BlueprintCallable)
-	float getDamage(AActor * enemy);
+	float getDamage(TArray<AActor *> enemys, float delta);
 
 	UFUNCTION(BlueprintCallable)
 	float checkFloorHit(FTransform me, float speed);
