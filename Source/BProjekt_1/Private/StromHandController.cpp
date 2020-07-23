@@ -3,6 +3,7 @@
 
 #include "StromHandController.h"
 #include "GameFramework/Actor.h"
+#include <Runtime\Engine\Classes\Components\BoxComponent.h>
 
 // Sets default values for this component's properties
 UStromHandController::UStromHandController()
@@ -38,9 +39,9 @@ FVector UStromHandController::getTargetPoint(FTransform me){
 	return tmp;
 }
 
-TArray<AActor *> UStromHandController::getTargets(AActor * colBox){
+TArray<AActor *> UStromHandController::getTargets(UBoxComponent * colBox){
 	TArray<AActor *> targets;
-	colBox.GetOverlappingActors(targets);
+	colBox->GetOverlappingActors(targets);
 	//GetOverlappingActors(targets);
 	//for(AActor actor: colBox.getOverlappingActors()){
 		

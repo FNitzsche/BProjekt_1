@@ -31,7 +31,7 @@ public:
 	FVector getTargetPoint(FTransform me);
 
 	UFUNCTION(BlueprintCallable)
-	TArray<AActor *> getTargets(AActor * colBox);
+	TArray<AActor *> getTargets(UBoxComponent * colBox);
 
 	UFUNCTION(BlueprintCallable)
 	float getDamage(TArray<AActor *> enemys, float delta);
