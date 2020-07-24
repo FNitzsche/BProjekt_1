@@ -50,7 +50,7 @@ TArray<float> UStromHandController::getDamage(TArray<AActor *> enemys, float del
 	for (AActor* enemy : enemys) {
 		FTransform enePos = enemy->GetActorTransform();
 		float dist = sqrt(pow((enePos.GetLocation().X- me.GetLocation().X),2) + pow((enePos.GetLocation().Y - me.GetLocation().Y), 2) + pow((enePos.GetLocation().Z - me.GetLocation().Z), 2));
-		damage.Add(10000 * delta / dist);
+		damage.Add(10000 * delta / ((1 < dist) ? dist : 1));
 	}
 	return damage;
 }
