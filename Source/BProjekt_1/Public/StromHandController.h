@@ -34,7 +34,7 @@ public:
 	TArray<AActor *> getTargets(UBoxComponent * colBox);
 
 	UFUNCTION(BlueprintCallable)
-	float getDamage(TArray<AActor *> enemys, float delta);
+	TArray<float> getDamage(TArray<AActor *> enemys, float delta, FTransform me);
 
 	UFUNCTION(BlueprintCallable)
 	float checkFloorHit(FTransform me, float speed);

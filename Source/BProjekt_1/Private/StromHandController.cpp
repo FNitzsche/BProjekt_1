@@ -42,16 +42,17 @@ FVector UStromHandController::getTargetPoint(FTransform me){
 TArray<AActor *> UStromHandController::getTargets(UBoxComponent * colBox){
 	TArray<AActor *> targets;
 	colBox->GetOverlappingActors(targets);
-	//GetOverlappingActors(targets);
-	//for(AActor actor: colBox.getOverlappingActors()){
-		
-	//}
 	return targets;
 }
 
-float UStromHandController::getDamage(TArray<AActor *> enemys, float delta){
-
-	return 0;
+TArray<float> UStromHandController::getDamage(TArray<AActor *> enemys, float delta, FTransform me){
+	TArray<float> damage;
+	for (AActor* enemy : enemys) {
+		FTransform enePos = enemy->GetActorTransform();
+		float dist = sqrt(pow((enePos.GetLocation().X- me.GetLocation().X),2) + pow((enePos.GetLocation().Y - me.GetLocation().Y), 2) + pow((enePos.GetLocation().Z - me.GetLocation().Z), 2));
+		damage.Add(10000 * delta / dist);
+	}
+	return damage;
 }
 
 float UStromHandController::checkFloorHit(FTransform me, float speed){
