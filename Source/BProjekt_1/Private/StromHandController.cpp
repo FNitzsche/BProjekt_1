@@ -59,4 +59,3 @@ float UStromHandController::checkFloorHit(FTransform me, float speed){
 
 	return 0;
 }
-
