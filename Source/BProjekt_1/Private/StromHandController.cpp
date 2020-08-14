@@ -39,9 +39,14 @@ FVector UStromHandController::getTargetPoint(FTransform me){
 	return tmp;
 }
 
-TArray<AActor *> UStromHandController::getTargets(UBoxComponent * colBox){
+TArray<AActor *> UStromHandController::getTargets(TArray<UBoxComponent *> colBoxes){
 	TArray<AActor *> targets;
-	colBox->GetOverlappingActors(targets);
+	for (UBoxComponent* box : colBoxes) {
+		TArray<AActor*> tmp;
+		box->GetOverlappingActors(tmp);
+		targets.Append(tmp);
+	}
+	
 	return targets;
 }
 
