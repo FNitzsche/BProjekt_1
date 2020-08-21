@@ -41,9 +41,11 @@ AActor * UTeleHandController::getTarget(FVector position, FVector direction , UB
 	float dist = 5000;
 
 	for (AActor* object : tmp) {
-		FString melee = "EnemyFlyMelee";
-		FString orb = "EnemyFlyOrb";
-		FString tetra = "EnemyFlyTetra";
+		FString melee = "Default__EnemyFlyMelee_C";
+		FString orb = "Default__EnemyFlyOrb_C";
+		FString tetra = "Default__EnemyFlyTetra_C";
+		FString s = object->GetClass()->GetDefaultObjectName().ToString();
+		UE_LOG(LogTemp, Warning, TEXT("%s"), *s);
 		if (object->GetClass()->GetDefaultObjectName().ToString() == melee|| object->GetClass()->GetDefaultObjectName().ToString() == orb || object->GetClass()->GetDefaultObjectName().ToString() == tetra) {
 			FVector ac = object->GetActorLocation();
 			float tmpdist = FMath::PointDistToLine(ac, direction, position);
