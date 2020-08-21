@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "GameFramework/Actor.h"
 #include "TeleHandController.generated.h"
 
 
@@ -25,7 +26,7 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UFUNCTION(BlueprintCallable)
-	AActor * getTarget(FTransform me);
+	AActor * getTarget(FVector position, FVector direction , UBoxComponent * box);
 
 	UFUNCTION(BlueprintCallable)
 	AActor * grab(FTransform me);

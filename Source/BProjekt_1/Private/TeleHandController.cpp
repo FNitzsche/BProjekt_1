@@ -2,6 +2,8 @@
 
 
 #include "TeleHandController.h"
+#include <Runtime\Engine\Classes\Components\BoxComponent.h>
+#include "Math/UnrealMathUtility.h"
 
 // Sets default values for this component's properties
 UTeleHandController::UTeleHandController()
@@ -32,8 +34,26 @@ void UTeleHandController::TickComponent(float DeltaTime, ELevelTick TickType, FA
 	// ...
 }
 
-AActor * UTeleHandController::getTarget(FTransform me){
+AActor * UTeleHandController::getTarget(FVector position, FVector direction , UBoxComponent * box){
 	AActor * target = NULL;
+	TArray<AActor*> tmp;
+	box->GetOverlappingActors(tmp);
+	float dist = 5000;
+
+	for (AActor* object : tmp) {
+		FString melee = "EnemyFlyMelee";
+		FString orb = "EnemyFlyOrb";
+		FString tetra = "EnemyFlyTetra";
+		if (object->GetClass()->GetDefaultObjectName().ToString() == melee|| object->GetClass()->GetDefaultObjectName().ToString() == orb || object->GetClass()->GetDefaultObjectName().ToString() == tetra) {
+			FVector ac = object->GetActorLocation();
+			float tmpdist = FMath::PointDistToLine(ac, direction, position);
+			if (tmpdist < dist) {
+				target = object;
+				dist = tmpdist;
+			}
+		}
+	}
+
 	return target;
 }
 
