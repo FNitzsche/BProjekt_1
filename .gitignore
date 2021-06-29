@@ -14,3 +14,4 @@ Saved
 *.xcworkspace
 *.wav
 *.ogg
+Build/WindowsNoEditor/FileOpenOrder/*
